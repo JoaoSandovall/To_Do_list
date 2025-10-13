@@ -1,0 +1,10 @@
+.icons {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.icons button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}

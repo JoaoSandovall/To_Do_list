@@ -1,0 +1,17 @@
+.headingMain {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.headingMain span {
+  padding: 0.2rem 0.8rem;
+  background-color: #cddfcc;
+  border-radius: 20px;
+}
+
+.headingMain p,
+.headingMain span {
+  display: flex;
+  gap: 8px;
+}
