@@ -1,73 +1,25 @@
-# React + TypeScript + Vite
+ToDo List Full-Stack (React + Python)Uma aplicação completa de gerenciamento de tarefas (To-Do List) construída com uma arquitetura de serviços desacoplada. O projeto é estruturado como um monorepo, contendo um front-end reativo em React (com Vite e TypeScript) e um back-end de API RESTful em Python (com Flask).Arquitetura do ProjetoO repositório está dividido em duas partes principais:/frontend: Contém a aplicação client-side em React./backend: Contém o servidor da API RESTful em Python.Tech Stack (Tecnologias Utilizadas)Front-EndReact 19Vite (Build tool e servidor de desenvolvimento)TypeScriptCSS Modules (Para estilo de componentes escopados)Back-EndPython 3Flask (Servidor web e roteamento de API)Flask-CORS (Gerenciamento de Cross-Origin Resource Sharing)SQLite 3 (Banco de dados SQL leve para persistência de dados)Funcionalidades ImplementadasCRUD completo de Tarefas:Create: Adicionar novas tarefas.Read: Listar todas as tarefas cadastradas.Update: Marcar/Desmarcar tarefas como concluídas.Delete: Excluir tarefas da lista.Estado Reativo: A interface do usuário é atualizada dinamicamente com base nas interações.Contadores Dinâmicos: Cálculo em tempo real do total de tarefas criadas e concluídas.Persistência de Dados: As tarefas são salvas no servidor e persistem após o recarregamento da página.Pré-requisitosPara executar este projeto localmente, você precisará ter as seguintes ferramentas instaladas:Python (versão 3.8 ou superior)Node.js (versão 18 ou superior) e npm.Instalação e ExecuçãoSiga os passos abaixo para configurar e executar a aplicação em seu ambiente de desenvolvimento. Ambos os servidores (back-end e front-end) devem estar rodando simultaneamente.1. Configuração do Back-end (API Python)Primeiro, prepare o servidor que fornecerá os dados.Bash# 1. Navegue até a pasta do back-end
+cd backend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 2. Crie um ambiente virtual (recomendado)
+python -m venv venv
+source venv/bin/activate  # No Windows, use: venv\Scripts\activate
 
-Currently, two official plugins are available:
+# 3. Instale as dependências
+# (Se você não tiver um requirements.txt, crie-o com os pacotes abaixo)
+pip install Flask Flask-CORS
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# 4. Inicie o servidor
+# O banco de dados (tarefas.db) será criado automaticamente
+python main.py
 
-## React Compiler
+# O servidor estará rodando em: http://127.0.0.1:5000
+2. Configuração do Front-end (Aplicação React)Em um segundo terminal, configure e inicie a interface do usuário.Bash# 1. Navegue até a pasta do front-end
+cd frontend
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+# 2. Instale os pacotes npm
+npm install
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+# 3. Inicie o servidor de desenvolvimento
+npm run dev
+Após executar os comandos, seu navegador será aberto automaticamente no endereço http://localhost:5173 (ou porta similar) e a aplicação estará totalmente funcional, conectada ao seu back-end local.Definição da API (Endpoints)O servidor back-end expõe os seguintes endpoints RESTful:MétodoEndpointDescriçãoGET/tasksRetorna um array JSON com todas as tarefas.POST/tasksCria uma nova tarefa. Requer um corpo JSON: {"tarefa": "Nome da tarefa"}.PUT/tasks/<int:id_tarefa>/completeAlterna o status completada (de true para false e vice-versa) de uma tarefa específica.DELETE/tasks/<int:id_tarefa>Exclui uma tarefa específica com base no seu id.
