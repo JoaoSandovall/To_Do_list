@@ -1,0 +1,13 @@
+.heading {
+  background-color: #f4e6f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  font-size: 16px;
+  height: 120px;
+}
+
+.heading svg {
+  width: 60px;
+}
